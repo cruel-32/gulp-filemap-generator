@@ -3,14 +3,11 @@ auto generate sitemap for development
 
 ## Installation
 
-————-
-“`
-var i = 0
-“`
-
-var foo = “bar”
-<html> </html>
-Provide code examples and explanations of how to get the project.
+<pre>
+<code>
+var i = 0;
+</code>
+</pre>
 
 ## Code Example
 
