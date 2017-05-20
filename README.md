@@ -10,7 +10,7 @@ npm install gulp-sitemap-generator
 ## Code Example
 
 *gulpfile.js
-<pre><code>
+```javascript
 gulp.task('html', () => {
     return gulp.src([`/app/**/*.html`])
         .pipe(sitemap({
@@ -19,10 +19,10 @@ gulp.task('html', () => {
         }))
         .pipe(gulp.dest(`/dest/map`))
 });
-</code></pre>
+```
 
 *your-template.html
-<pre><code>
+```html
 &lt;html&gt;
   &lt;head&gt;
     .....
@@ -52,8 +52,7 @@ gulp.task('html', () => {
         &lt;% }); %&gt;
     &lt;/tbody&gt;
 &lt;/table&gt;
-</code></pre>
-
+```
 
 
 ## Options
