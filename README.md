@@ -49,68 +49,25 @@ gulp.task('html', () => {
 ```
 
 ### html in your project
-|-- .bowerrc
-    |-- .jshintrc
-    |-- .jshintrc2
-    |-- Gruntfile.js
-    |-- README.md
-    |-- bower.json
-    |-- karma.conf.js
-    |-- package.json
-    |-- app
-        |-- app.js
-        |-- db.js
-        |-- directoryList.md
-        |-- index.html
-        |-- mddir.js
-        |-- routing.js
-        |-- server.js
-        |-- _api
-            |-- api.groups.js
-            |-- api.posts.js
-            |-- api.users.js
-            |-- api.widgets.js
-        |-- _components
-            |-- directives
-                |-- directives.module.js
-                |-- vendor
-                    |-- directive.draganddrop.js
-            |-- helpers
-                |-- helpers.module.js
-                |-- proprietary
-                    |-- factory.actionDispatcher.js
-            |-- services
-                |-- services.cardTemplates.js
-                |-- services.cards.js
-                |-- services.groups.js
-                |-- services.posts.js
-                |-- services.users.js
-                |-- services.widgets.js
-        |-- _mocks
-            |-- mocks.groups.js
-            |-- mocks.posts.js
-            |-- mocks.users.js
-            |-- mocks.widgets.js
+
 .
-|-- /app
-    |-- html
-        |-- a.html
-        |-- b.html
-        |-- sub1
-            |-- c.html
-            |-- d.html
-            |-- e.html
-            |-- sub1-1
-                |-- f.html
-                |-- g.html
-            |-- sub1-2
-                |-- h.html
-                |-- i.html
+└── app
+    └── html
+        ├── a.html
+        ├── b.html
+        └── sub1
+            ├── c.html
+            ├── d.html
+            ├── e.html
+            ├── sub1-1
+            │    ├── f.html
+            │    └── g.html
+            ├── sub1-1
+                 ├── h.html
+                 └── i.html
 
 
 ### after build
-
-### result
 
 **app directory 
 title | directory | filename | author | description |
@@ -235,6 +192,23 @@ i-title | /app/html/sub1/sub1-2/i.html | i.tml | author (meta tag) | description
             |-- g.html
             |-- h.html
 
+.
+└── app
+    └── html
+        └── sub1
+            ├── a.html
+            └── b.html
+        └── sub2
+            ├── c.html
+            └── d.html
+        └── sub3
+            ├── e.html
+            └── sub3-1
+                 └── f.html
+        └── sub4
+            ├── g.html
+            └── h.html
+                       
 
 #### after build
 
