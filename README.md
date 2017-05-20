@@ -23,36 +23,35 @@ gulp.task('html', () => {
 
 *your-template.html
 <pre><code>
-<!doctype html>
-<html>
-  <head>
+&lt;html&gt;
+  &lt;head&gt;
     .....
-    <title>INDEX</title>
-    <meta name="description" content="Good Contents">
-    <meta name='author' content="cruel32">
-</head>
-<table class="table">
-    <thead>
-        <tr class="tr">
-            <th class="th"><span class="txt">타이틀</span></th>
-            <th class="th"><span class="txt">파일경로</span></th>
-            <th class="th"><span class="txt">파일명</span></th>
-            <th class="th"><span class="txt">작업자</span></th>
-            <th class="th"><span class="txt">설명</span></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% _.each(maps, function(m) { %>
-        <tr class="tr">
-            <td class="td"><span class="txt"><%= m.title %></span></td>
-            <td class="td"><span class="txt left"><%= m.href %></span></td>
-            <td class="td"><a href="<%= m.href %>" class="txt" target="_blank"><%= m.name %></a></td>
-            <td class="td"><span class="txt"><%= m.author %></span></td>
-            <td class="td"><span class="txt left"><%= m.description %></span></td>
-        </tr>
-        <% }); %>
-    </tbody>
-</table>
+    &lt;title&gt;INDEX&lt;/title&gt;
+    &lt;meta name="description" content="Good Contents"&gt;
+    &lt;meta name='author' content="cruel32"&gt;
+&lt;/head&gt;
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;&lt;span&gt;타이틀&lt;/span&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;span&gt;파일경로&lt;/span&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;span&gt;파일명&lt;/span&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;span&gt;작업자&lt;/span&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;span&gt;설명&lt;/span&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;% _.each(maps, function(m) { %&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;span&gt;&lt;%= m.title %&gt;&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span&gt;&lt;%= m.href %&gt;&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;a href="&lt;%= m.href %&gt;" target="_blank"&gt;&lt;%= m.name %&gt;&lt;/a&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span&gt;&lt;%= m.author %&gt;&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span&gt;&lt;%= m.description %&gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;% }); %&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
 </code></pre>
 
 
