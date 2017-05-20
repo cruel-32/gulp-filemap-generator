@@ -9,7 +9,7 @@ npm install gulp-sitemap-generator
 
 ## Code Example
 
-###gulpfile.js
+### gulpfile.js
 ```javascript
 gulp.task('html', () => {
     return gulp.src([`/app/**/*.html`])
@@ -21,9 +21,9 @@ gulp.task('html', () => {
 });
 ```
 
-###your-template.html
+### your-template.html
 ```html
-<h2&gt;><%= folderNames[0] %> directory</h1>
+<h2><%= folderNames[0] %> directory</h1>
 <table>
     <thead>
         <tr>
@@ -65,13 +65,13 @@ gulp.task('html', () => {
                 |-- h.html
                 |-- i.html
 
-###after build
+### after build
 
 ### result
 
-** app directory 
+**app directory 
 title | directory | filename | author | description |
------ | --------- | -------- | ------ | ----------- |
+----- |:---------:|:--------:|:------:|:-----------:|
 a-title | /app/html/a.html | a.tml | author (meta tag) | description (mata tag) |
 ----- | --------- | -------- | ------ | ----------- |
 b-title | /app/html/b.html | b.tml | author (meta tag) | description (mata tag) |
@@ -106,13 +106,13 @@ i-title | /app/html/sub1/sub1-2/i.html | i.tml | author (meta tag) | description
 ```
 
 ### Options - division
-**It can be multi-expressible on the basis of this
+** It can be multi-expressible on the basis of this
 
-####set options
+#### set options
 ```javascript
     division : 'html'
 ```
-####your-template.html
+#### your-template.html
 ```html
 <div>
     <h1>gulp-sitemap-generator</h1>
@@ -144,7 +144,7 @@ i-title | /app/html/sub1/sub1-2/i.html | i.tml | author (meta tag) | description
 </div>    
 ```
 
-####your-template.html
+#### your-template.html
 ```html
     <div>
     <h1>gulp-sitemap-generator</h1>
@@ -175,7 +175,7 @@ i-title | /app/html/sub1/sub1-2/i.html | i.tml | author (meta tag) | description
     <% }); %>
 </div>    
 ```
-####html in your project
+#### html in your project
 |-- /app
     |-- html
         |-- sub1
@@ -193,30 +193,30 @@ i-title | /app/html/sub1/sub1-2/i.html | i.tml | author (meta tag) | description
             |-- h.html
 
 
-####after build
+#### after build
 
-**sub1
+** sub1
 title | directory | filename | author | description |
 ----- | --------- | -------- | ------ | ----------- |
 title | /app/html/sub1/a.html | a.tml | author (meta tag) | description (mata tag) |
 ----- | --------- | -------- | ------ | ----------- |
 title | /app/html/sub1/b.html | b.tml | author (meta tag) | description (mata tag) |
 
-**sub2
+** sub2
 title | directory | filename | author | description |
 ----- | --------- | -------- | ------ | ----------- |
 title | /app/html/sub2/a.html | c.tml | author (meta tag) | description (mata tag) |
 ----- | --------- | -------- | ------ | ----------- |
 title | /app/html/sub2/b.html | d.tml | author (meta tag) | description (mata tag) |
 
-**sub3
+** sub3
 title | directory | filename | author | description |
 ----- | --------- | -------- | ------ | ----------- |
 title | /app/html/sub3/e.html | e.tml | author (meta tag) | description (mata tag) |
 ----- | --------- | -------- | ------ | ----------- |
 title | /app/html/sub3/sub3-1/f.html | f.tml | author (meta tag) | description (mata tag) |
 
-**sub4
+** sub4
 title | directory | filename | author | description |
 ----- | --------- | -------- | ------ | ----------- |
 title | /app/html/sub4/e.html | g.tml | author (meta tag) | description (mata tag) |
