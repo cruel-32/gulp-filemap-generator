@@ -73,21 +73,13 @@ gulp.task('html', () => {
 title | directory | filename | author | description |
 ----- |:---------:|:--------:|:------:|:-----------:|
 a-title | /app/html/a.html | a.tml | author (meta tag) | description (mata tag) |
------ | --------- | -------- | ------ | ----------- |
 b-title | /app/html/b.html | b.tml | author (meta tag) | description (mata tag) |
------ | --------- | -------- | ------ | ----------- |
 c-title | /app/html/sub1/c.html | c.tml | author (meta tag) | description (mata tag) |
------ | --------- | -------- | ------ | ----------- |
 d-title | /app/html/sub1/d.html | d.tml | author (meta tag) | description (mata tag) |
------ | --------- | -------- | ------ | ----------- |
 e-title | /app/html/sub1/e.html | e.tml | author (meta tag) | description (mata tag) |
------ | --------- | -------- | ------ | ----------- |
 f-title | /app/html/sub1/sub1-1/f.html | f.tml | author (meta tag) | description (mata tag) |
------ | --------- | -------- | ------ | ----------- |
 g-title | /app/html/sub1/sub1-1/g.html | g.tml | author (meta tag) | description (mata tag) |
------ | --------- | -------- | ------ | ----------- |
 h-title | /app/sub1/sub1-2/h.html | h.tml | author (meta tag) | description (mata tag) |
------ | --------- | -------- | ------ | ----------- |
 i-title | /app/html/sub1/sub1-2/i.html | i.tml | author (meta tag) | description (mata tag) |
 
 
@@ -101,7 +93,8 @@ i-title | /app/html/sub1/sub1-2/i.html | i.tml | author (meta tag) | description
         untitle : '-', //When the title can not be found in the meta information
         unknown : '-', //When the author can not be found in the meta information
         noDescription : '-' //When the description can not be found in the meta information
-        division : 'html' //Subfolders for app options. Template modifications are required. I'll explain it further below.
+        division : 'html' //Subfolders for app options.
+                          //Template modifications are required. I'll explain it further below.
     }))
 ```
 
