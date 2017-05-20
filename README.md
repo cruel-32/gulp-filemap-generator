@@ -50,6 +50,26 @@ gulp.task('html', () => {
 
 ### html in your project
 
+.. code::
+.
+|-- ContentStore
+|   |-- de-DE
+|   |   |-- art.mshc
+|   |   |-- artnoloc.mshc
+|   |   |-- clientserver.mshc
+|   |   |-- noarm.mshc
+|   |   |-- resources.mshc
+|   |   `-- windowsclient.mshc
+|   `-- en-US
+|       |-- art.mshc
+|       |-- artnoloc.mshc
+|       |-- clientserver.mshc
+|       |-- noarm.mshc
+|       |-- resources.mshc
+|       `-- windowsclient.mshc
+
+
+.
 |-- /app
     |-- html
         |-- a.html
@@ -64,6 +84,7 @@ gulp.task('html', () => {
             |-- sub1-2
                 |-- h.html
                 |-- i.html
+
 
 ### after build
 
