@@ -205,44 +205,24 @@ It can be multi-expressible on the basis of this
 #### after build
 
 sub1
-| title | directory                   | filename | author            | description            |
-| ----- | --------------------------- | -------- | ----------------- | ---------------------- |
-| title | /app/html/sub1/a.html       | a.tml    | author (meta tag) | description (mata tag) |
-| title | /app/html/sub1/b.html       | b.tml    | author (meta tag) | description (mata tag) |
- 
-sub2
-| title | directory                   | filename | author            | description            |
-| ----- | --------------------------- | -------- | ----------------- | ---------------------- |
-| title | /app/html/sub2/a.html       | c.tml    | author (meta tag) | description (mata tag) |
-| title | /app/html/sub2/b.html       | d.tml    | author (meta tag) | description (mata tag) |
- 
-sub3
-| title | directory                   | filename | author            | description            |
-| ----- | --------------------------- | -------- | ----------------- | ---------------------- |
-| title | /app/html/sub3/e.html       | e.tml    | author (meta tag) | description (mata tag) |
-| title | /app/html/sub3/sub3-1/f.html| f.tml    | author (meta tag) | description (mata tag) |
- 
-sub4
-| title | directory                   | filename | author            | description            |
-| ----- | --------------------------- | -------- | ----------------- | ---------------------- |
-| title | /app/html/sub4/e.html       | g.tml    | author (meta tag) | description (mata tag) |
-| title | /app/html/sub4/sub3-1/f.html| h.tml    | author (meta tag) | description (mata tag) |
-
 | title         | directory                    | filename | author            | description            |
 | ------------- | ---------------------------- | -------- | ----------------- | ---------------------- |
 | a-title       | /app/html/sub1/a.html        | a.html   | author (meta tag) | description (mata tag) |
 | b-title       | /app/html/sub1/b.html        | b.html   | author (meta tag) | description (mata tag) |
 
+sub2
 | title         | directory                    | filename | author            | description            |
 | ------------- | ---------------------------- | -------- | ----------------- | ---------------------- |
 | c-title       | /app/html/sub2/c.html        | c.html   | author (meta tag) | description (mata tag) |
 | d-title       | /app/html/sub2/d.html        | d.html   | author (meta tag) | description (mata tag) |
 
+sub3
 | title         | directory                    | filename | author            | description            |
 | ------------- | ---------------------------- | -------- | ----------------- | ---------------------- |
 | e-title       | /app/html/sub3/e.html        | e.html   | author (meta tag) | description (mata tag) |
 | f-title       | /app/html/sub3/sub3-1/f.html | f.html   | author (meta tag) | description (mata tag) |
 
+sub4
 | title         | directory                    | filename | author            | description            |
 | ------------- | ---------------------------- | -------- | ----------------- | ---------------------- |
 | g-title       | /app/html/sub4/g.html        | g.html   | author (meta tag) | description (mata tag) |
