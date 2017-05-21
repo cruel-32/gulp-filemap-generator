@@ -47,24 +47,7 @@ gulp.task('html', () => {
 ```
 
 ### html in your project
-
-Colons can be used to align columns.
-
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-
-There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don't need to make the 
-raw Markdown line up prettily. You can also use inline Markdown.
-
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
-
+<pre>
 .
 └── app
     └── html
@@ -80,22 +63,22 @@ Markdown | Less | Pretty
             ├── sub1-1
                  ├── h.html
                  └── i.html
-
+</pre>
 
 ### after build
 
-folder directory 
-| title | directory | filename | author | description |
-| --- |:---:|:---:|:---:|:---:|
-| a-title | /app/html/a.html | a.tml | author (meta tag) | description (mata tag) |
-| b-title | /app/html/b.html | b.tml | author (meta tag) | description (mata tag) |
-| c-title | /app/html/sub1/c.html | c.tml | author (meta tag) | description (mata tag) |
-| d-title | /app/html/sub1/d.html | d.tml | author (meta tag) | description (mata tag) |
-| e-title | /app/html/sub1/e.html | e.tml | author (meta tag) | description (mata tag) |
-| f-title | /app/html/sub1/sub1-1/f.html | f.tml | author (meta tag) | description (mata tag) |
-| g-title | /app/html/sub1/sub1-1/g.html | g.tml | author (meta tag) | description (mata tag) |
-| h-title | /app/sub1/sub1-2/h.html | h.tml | author (meta tag) | description (mata tag) |
-| i-title | /app/html/sub1/sub1-2/i.html | i.tml | author (meta tag) | description (mata tag) |
+
+| title         | directory                    | filename | author            | description            |
+| ------------- |:----------------------------:|:--------:|:-----------------:| ----------------------:|
+| a-title       | /app/html/a.html             | a.html   | author (meta tag) | description (mata tag) |
+| b-title       | /app/html/b.html             | b.html   | author (meta tag) | description (mata tag) |
+| c-title       | /app/html/sub1/c.html        | c.html   | author (meta tag) | description (mata tag) |
+| d-title       | /app/html/sub1/d.html        | d.html   | author (meta tag) | description (mata tag) |
+| e-title       | /app/html/sub1/e.html        | e.html   | author (meta tag) | description (mata tag) |
+| f-title       | /app/html/sub1/sub1-1/f.html | f.tml    | author (meta tag) | description (mata tag) |
+| g-title       | /app/html/sub1/sub1-1/g.html | g.tml    | author (meta tag) | description (mata tag) |
+| h-title       | /app/sub1/sub1-2/h.html      | h.html   | author (meta tag) | description (mata tag) |
+| i-title       | /app/html/sub1/sub1-2/i.html | i.html   | author (meta tag) | description (mata tag) |
 
 
 ## Options
@@ -184,6 +167,7 @@ It can be multi-expressible on the basis of this
 </div>    
 ```
 #### html in your project
+<pre>
 |-- /app
     |-- html
         |-- sub1
@@ -216,34 +200,34 @@ It can be multi-expressible on the basis of this
         └── sub4
             ├── g.html
             └── h.html
-                       
+</pre>
 
 #### after build
 
 
 sub1
-| title | directory | filename | author | description |
-| --- | --- | --- | --- | --- |
-| title | /app/html/sub1/a.html | a.tml | author (meta tag) | description (mata tag) |
-| title | /app/html/sub1/b.html | b.tml | author (meta tag) | description (mata tag) |
+| title | directory                     | filename | author            | description            |
+| ----- | ----------------------------- | -------- | ----------------- | ---------------------- |
+| title | /app/html/sub1/a.html         | a.tml    | author (meta tag) | description (mata tag) |
+| title | /app/html/sub1/b.html         | b.tml    | author (meta tag) | description (mata tag) |
  
 sub2
-| title | directory | filename | author | description |
-| --- | --- | --- | --- | --- |
-| title | /app/html/sub2/a.html | c.tml | author (meta tag) | description (mata tag) |
-| title | /app/html/sub2/b.html | d.tml | author (meta tag) | description (mata tag) |
+| title | directory                     | filename | author            | description            |
+| ----- | ----------------------------- | -------- | ----------------- | ---------------------- |
+| title | /app/html/sub2/a.html         | c.tml    | author (meta tag) | description (mata tag) |
+| title | /app/html/sub2/b.html         | d.tml    | author (meta tag) | description (mata tag) |
  
 sub3
-| title | directory | filename | author | description |
-| --- | --- | --- | --- | --- |
-| title | /app/html/sub3/e.html | e.tml | author (meta tag) | description (mata tag) |
-| title | /app/html/sub3/sub3-1/f.html | f.tml | author (meta tag) | description (mata tag) |
+| title | directory                     | filename | author            | description            |
+| ----- | ----------------------------- | -------- | ----------------- | ---------------------- |
+| title | /app/html/sub3/e.html         | e.tml    | author (meta tag) | description (mata tag) |
+| title | /app/html/sub3/sub3-1/f.html  | f.tml    | author (meta tag) | description (mata tag) |
  
 sub4
-| title | directory | filename | author | description |
-| --- | --- | --- | --- | --- |
-| title | /app/html/sub4/e.html | g.tml | author (meta tag) | description (mata tag) |
-| title | /app/html/sub4/sub3-1/f.html | h.tml | author (meta tag) | description (mata tag) |
+| title | directory                     | filename | author            | description            |
+| ----- | ----------------------------- | -------- | ----------------- | ---------------------- |
+| title | /app/html/sub4/e.html         | g.tml    | author (meta tag) | description (mata tag) |
+| title | /app/html/sub4/sub3-1/f.html  | h.tml    | author (meta tag) | description (mata tag) |
 
 
 
