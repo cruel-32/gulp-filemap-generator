@@ -18,7 +18,7 @@ gulp.task('html', () => {
           'dest': 'dest', //*Required Options
           'app': 'app' //*Required Options
         }))
-        .pipe(gulp.dest(`/dest/map`))
+        .pipe(gulp.dest(`/dest`))
 });
 ```
 
