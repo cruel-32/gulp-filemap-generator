@@ -49,7 +49,7 @@ gulp.task('html', () => {
 </table>
 ```
 
-### html in your project
+### webpage in your project
 <pre>
 .
 └── app
@@ -169,7 +169,7 @@ It can be multi-expressible on the basis of this
     <% }); %>
 </div>    
 ```
-#### html in your project
+#### webpage in your project
 <pre>
 |-- /app
     |-- html
