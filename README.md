@@ -80,7 +80,7 @@ gulp.task('html', () => {
 | e-title       | /app/html/sub1/e.html        | e.html   | author (meta tag) | description (mata tag) |
 | f-title       | /app/html/sub1/sub1-1/f.html | f.tml    | author (meta tag) | description (mata tag) |
 | g-title       | /app/html/sub1/sub1-1/g.html | g.tml    | author (meta tag) | description (mata tag) |
-| h-title       | /app/sub1/sub1-2/h.html      | h.html   | author (meta tag) | description (mata tag) |
+| h-title       | /app/html/sub1/sub1-2/h.html | h.html   | author (meta tag) | description (mata tag) |
 | i-title       | /app/html/sub1/sub1-2/i.html | i.html   | author (meta tag) | description (mata tag) |
 
 
