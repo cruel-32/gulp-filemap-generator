@@ -68,7 +68,7 @@ gulp.task('html', () => {
                  └── i.html
 </pre>
 
-### after build
+### map.html after build
 
 
 | title         | directory                    | filename | author            | description            |
@@ -189,7 +189,7 @@ It can be multi-expressible on the basis of this
             └── h.html
 </pre>
 
-#### after build
+#### map.html after build
 
 sub1
 
