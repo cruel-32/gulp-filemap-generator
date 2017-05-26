@@ -1,69 +1,15 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "gulp-sitemap-generator@0.1.0",
-        "scope": null,
-        "escapedName": "gulp-sitemap-generator",
-        "name": "gulp-sitemap-generator",
-        "rawSpec": "0.1.0",
-        "spec": "0.1.0",
-        "type": "version"
-      },
-      "C:\\work\\study\\jquery"
-    ]
-  ],
-  "_from": "gulp-sitemap-generator@0.1.0",
-  "_id": "gulp-sitemap-generator@0.1.0",
-  "_inCache": true,
-  "_location": "/gulp-sitemap-generator",
-  "_nodeVersion": "6.10.3",
-  "_npmOperationalInternal": {
-    "host": "s3://npm-registry-packages",
-    "tmp": "tmp/gulp-sitemap-generator-0.1.0.tgz_1495220356593_0.8128723541740328"
-  },
-  "_npmUser": {
-    "name": "cruel32",
-    "email": "cruel32@nate.com"
-  },
-  "_npmVersion": "3.10.10",
-  "_phantomChildren": {},
-  "_requested": {
-    "raw": "gulp-sitemap-generator@0.1.0",
-    "scope": null,
-    "escapedName": "gulp-sitemap-generator",
-    "name": "gulp-sitemap-generator",
-    "rawSpec": "0.1.0",
-    "spec": "0.1.0",
-    "type": "version"
-  },
-  "_requiredBy": [
-    "#DEV:/"
-  ],
-  "_resolved": "https://registry.npmjs.org/gulp-sitemap-generator/-/gulp-sitemap-generator-0.1.0.tgz",
-  "_shasum": "8285644af560067525ab8d64c10d195e578f2fca",
-  "_shrinkwrap": null,
-  "_spec": "gulp-sitemap-generator@0.1.0",
-  "_where": "C:\\work\\study\\jquery",
-  "author": {
-    "name": "cruel32"
-  },
-  "bugs": {
-    "url": "https://github.com/cruel-32/gulp-sitemap-generator/issues"
-  },
-  "dependencies": {
-    "consolidate": "^0.14.5",
-    "gulp-util": "^3.0.6",
-    "lodash": "^3.10.0"
-  },
+  "name": "gulp-sitemap-generator",
+  "version": "0.1.0",
   "description": "auto generate sitemap for development",
-  "devDependencies": {},
-  "directories": {},
-  "dist": {
-    "shasum": "8285644af560067525ab8d64c10d195e578f2fca",
-    "tarball": "https://registry.npmjs.org/gulp-sitemap-generator/-/gulp-sitemap-generator-0.1.0.tgz"
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/cruel-32/gulp-sitemap-generator#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cruel-32/gulp-sitemap-generator.git"
+  },
   "keywords": [
     "auto",
     "generate",
@@ -71,23 +17,15 @@
     "sitemap",
     "development"
   ],
+  "author": "cruel32",
   "license": "ISC",
-  "main": "index.js",
-  "maintainers": [
-    {
-      "name": "cruel32",
-      "email": "cruel32@nate.com"
-    }
-  ],
-  "name": "gulp-sitemap-generator",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cruel-32/gulp-sitemap-generator.git"
+  "bugs": {
+    "url": "https://github.com/cruel-32/gulp-sitemap-generator/issues"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "version": "0.1.0"
+  "homepage": "https://github.com/cruel-32/gulp-sitemap-generator#readme",
+  "dependencies": {
+    "consolidate": "^0.14.5",
+    "gulp-util": "^3.0.6",
+    "lodash": "^3.10.0"
+  }
 }

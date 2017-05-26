@@ -10,18 +10,18 @@ function siteMapGenerator(options){
         'name':`map.html`,
         'dest':`./dest`,
         'untitle':'-',
-        'unknown':'cruel32',
-        'noDir':'루트',
-        'noDescription':'설명',
+        'unknown':'-',
+        'noDir':'상위',
+        'noDescription':'-',
         'division':false
     },options),
     outputFile,
     stream,
-    folders={
+    folders = {
         [config.noDir] : 0
     },
     folderNames=[config.noDir],
-    depthIndex=1,
+    depthIndex = 1,
     maps = config.division ? [[]] : [];
 	stream = Stream.PassThrough({
 		objectMode: true
@@ -32,7 +32,10 @@ function siteMapGenerator(options){
             filepath = file.path,
             cwd = file.cwd,
             relative = path.relative(cwd, filepath),
-            folder,dir,head,title,author,description,name;
+            dir = relative.replace(config.app,''),
+            head = contents.match(/\<head\>.+\<\/head\>/im),
+            name = path.parse(filepath).base,
+            title,author,description,folder;
 
 		if (!outputFile) {
 			outputFile = new gutil.File({
@@ -42,15 +45,18 @@ function siteMapGenerator(options){
 				contents: file.isBuffer() ? new Buffer(0) : new Stream.PassThrough()
 			});
 		}
-        name = path.parse(filepath).base;
-        head = contents.match(/\<head\>.+\<\/head\>/im);
-        dir = relative.replace(config.app,'');
-        if(head){
-            title = head[0].match(/\<title\>(.{0,}?)\<\/title\>/im);
-            author = head[0].match(/\<meta\s+name\=[\"\']author[\"\']\s+content\=[\"\'](.{0,}?)[\"\']\>/im);
-            description = head[0].match(/\<meta\s+name\=[\"\']description[\"\']\s+content\=[\"\'](.{0,}?)[\"\']\>/im);
+
+        let getMeta = function(res,text){
+            let reg = new RegExp(`\\\<meta\\s+[^\\>]*name\=[\\"\\']${text}[\\"\\'].*?\\>`,'im');
+            return res.match(reg);
         }
-        let pushObject = function(arr){
+
+        let getContent = function(res){
+            let reg = new RegExp(`content\=[\"\'](.{0,}?)[\"\']`,'im');
+            return res.match(reg);
+        }
+
+        let pushDataObject = function(arr){
             arr.push({
                 title:title?title[1]:config.untitle,
                 author:author?author[1]:config.unknown,
@@ -59,32 +65,44 @@ function siteMapGenerator(options){
                 href:path.join(config.dest,dir)
             })
         }
+
+        if(head){
+            title = head[0].match(/\<title\>(.{0,}?)\<\/title\>/im);
+            author = getMeta(head[0],'author');
+            if(author){
+                author = getContent(author[0]);
+            }
+            description = getMeta(head[0],'description');
+            if(description){
+                description = getContent(description[0]);
+            }
+        }
+
         if(config.division){
             if(dir.replace(name,'').includes(config.division)){
                 let reg = new RegExp(`[\\\\\\\/]${config.division}[\\\\\\\/](.{1,}?)[\\\\\\\/].{0,}${name}`, 'im');
                 let match = dir.match(reg);
                 if(match){
                     if(match[1] in folders){
-                        pushObject(maps[folders[match[1]]])
+                        pushDataObject(maps[folders[match[1]]]);
                     } else {
                         maps.push([]);
                         folderNames.push(match[1]);
-                        folders[match[1]]=depthIndex
+                        folders[match[1]]=depthIndex;
                         depthIndex+=1;
+                        pushDataObject(maps[folders[match[1]]]);
                     }
                 } else {
-                    pushObject(maps[0])
+                    pushDataObject(maps[0])
                 }
             }
         } else {
-            pushObject(maps);
+            pushDataObject(maps);
         }
-        console.log("maps : ", maps)
         this.push(file);
         cb();
 	};
     stream._flush = function(cb) {
-		let content;
 		if (maps.length) {
 			consolidate['lodash'](path.join(config.app,config.name), {
                 maps:maps,
@@ -93,7 +111,7 @@ function siteMapGenerator(options){
                 if(err){
                     throw new gutil.PluginError(`${err.message} by ${PLUGIN_NAME}`);
                 }
-                content = Buffer(html);
+                let content = Buffer(html);
                 if(outputFile.isBuffer()){
                     outputFile.contents = content;
                 } else {
