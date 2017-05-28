@@ -1,6 +1,6 @@
 {
   "name": "gulp-sitemap-generator",
-  "version": "0.1.2",
+  "version": "0.1.6",
   "description": "auto generate sitemap for development",
   "main": "index.js",
   "scripts": {
