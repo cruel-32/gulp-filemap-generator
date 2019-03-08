@@ -3,6 +3,7 @@
 * It finds Web page files in the project and collects the path, file name and meta tag.
 
 프로젝트 내에 웹페이지 파일을 찾아 경로와 파일명 그리고 메타태그(title,author,description)를 수집해서 정리해줍니다. 
+(html파일명을 한글로 작성하지 마세요)
 
 ## Installation
 
