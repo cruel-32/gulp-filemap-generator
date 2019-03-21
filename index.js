@@ -4,48 +4,50 @@ let Stream = require('stream'),
 	_ = require('lodash'),
 	consolidate = require('consolidate');
 
-const PLUGIN_NAME = 'gulp-sitemap-generator';
-function siteMapGenerator(options){
+const PLUGIN_NAME = 'gulp-filemap-generator';
+
+function fileMapGenerator(options){
     let config = Object.assign({
-        'name':`map.html`,
-        'dest':`./dest`,
-        'untitle':'-',
-        'unknown':'-',
-        'noDir':'상위',
-        'noDescription':'-',
+        'baseDir':``,
+        'template':`map.html`,
+        'templatePath' : `./`,
+        'title':'-',
+        'author':'-',
+        'directory':'상위',
+        'description':'-',
         'division':false,
         'stream' : true
     },options),
     outputFile,
     stream,
     folders = {
-        [config.noDir] : 0
+        [config.directory] : 0
     },
-    folderNames=[config.noDir],
+    folderNames=[config.directory],
     depthIndex = 1,
     maps = config.division ? [[]] : [];
 	stream = Stream.PassThrough({
 		objectMode: true
-	});
-
+    });
+    
     stream._transform = function(file, encoding, cb) {
         let contents = file.contents.toString().replace(/\n/g,' ').replace(/\r/g,' '),
             filepath = file.path,
             cwd = file.cwd,
             relative = path.relative(cwd, filepath),
-            dir = relative.replace(config.app,''),
+            dir = relative.replace(`${config.baseDir}`,''),
             head = contents.match(/\<head\>.+\<\/head\>/im),
             name = path.parse(filepath).base,
             title,author,description,folder;
 
 		if (!outputFile) {
 			outputFile = new gutil.File({
-				base: file.base,
+				base: file.cwd+config.templatePath,
 				cwd: file.cwd,
-				path: path.join(file.base, config.name),
+				path: path.join(file.cwd+config.templatePath, config.template),
 				contents: file.isBuffer() ? new Buffer(0) : new Stream.PassThrough()
 			});
-		}
+        }
 
         let getMeta = function(res,text){
             let reg = new RegExp(`\\\<meta\\s+[^\\>]*name\=[\\"\\']${text}[\\"\\'].*?\\>`,'im');
@@ -59,11 +61,11 @@ function siteMapGenerator(options){
 
         let pushDataObject = function(arr){
             arr.push({
-                title:title?title[1]:config.untitle,
-                author:author?author[1]:config.unknown,
-                description:description?description[1]:config.noDescription,
+                title:title?title[1]:config.title,
+                author:author?author[1]:config.author,
+                description:description?description[1]:config.description,
                 name:name,
-                href:path.join(config.dest,dir)
+                href:dir
             })
         }
 
@@ -104,10 +106,11 @@ function siteMapGenerator(options){
             this.push(file);
         }
         cb();
-	};
+    };
+    
     stream._flush = function(cb) {
 		if (maps.length) {
-			consolidate['lodash'](path.join(config.app,config.name), {
+			consolidate['lodash'](path.join(config.templatePath,config.template), {
                 maps:maps,
                 folderNames:folderNames
             }, function(err, html) {
@@ -130,4 +133,4 @@ function siteMapGenerator(options){
 	};
     return stream;
 }
-module.exports = siteMapGenerator;
+module.exports = fileMapGenerator;
