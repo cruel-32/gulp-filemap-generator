@@ -95,9 +95,10 @@ gulp.task('html', () => {
         noDir : 'etc',
         untitle : '-', //When the title can not be found in the meta information
         unknown : '-', //When the author can not be found in the meta information
-        noDescription : '-' //When the description can not be found in the meta information
-        division : 'html' //Subfolders for app options.
+        noDescription : '-', //When the description can not be found in the meta information
+        division : 'html', //Subfolders for app options.
                           //Template modifications are required. I'll explain it further below.
+        stream : false //Only map.html files can be steamed || true : All files can be streamd
     }))
 ```
 
