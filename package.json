@@ -1,28 +1,29 @@
 {
-  "name": "gulp-sitemap-generator",
-  "version": "0.1.6",
-  "description": "auto generate sitemap for development",
+  "name": "gulp-filemap-generator",
+  "version": "0.0.1",
+  "description": "auto generate filemap for development",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cruel-32/gulp-sitemap-generator.git"
+    "url": "git+https://github.com/cruel-32/gulp-filemap-generator.git"
   },
   "keywords": [
     "auto",
     "generate",
     "index",
-    "sitemap",
+    "filemap",
+    "html",
     "development"
   ],
   "author": "cruel32",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cruel-32/gulp-sitemap-generator/issues"
+    "url": "https://github.com/cruel-32/gulp-filemap-generator/issues"
   },
-  "homepage": "https://github.com/cruel-32/gulp-sitemap-generator#readme",
+  "homepage": "https://github.com/cruel-32/gulp-filemap-generator#readme",
   "dependencies": {
     "consolidate": "^0.14.5",
     "gulp-util": "^3.0.6",

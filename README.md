@@ -1,24 +1,26 @@
-# gulp-sitemap-generator
-* auto generate sitemap for development.
+# gulp-filemap-generator
+* auto generate filemap for development.
 * It finds Web page files in the project and collects the path, file name and meta tag.
 
-프로젝트 내에 웹페이지 파일을 찾아 경로와 파일명 그리고 메타태그(title,author,description)를 수집해서 정리해줍니다. 
-(html파일명을 한글로 작성하지 마세요)
+프로젝트 내에 웹페이지파일(html)을 찾아 경로와 파일명 그리고 메타태그(title,author,description)를 수집해서 정리해줍니다. 
+(html 파일명을 한글로 작성하지 마세요)
 
 ## Installation
 
-<pre><code>npm install gulp-sitemap-generator</code></pre>
+<pre><code>npm install gulp-filemap-generator</code></pre>
 
 ## Code Example
 
 ### gulpfile.js
 ```javascript
+const filemap = require('gulp-filemap-generator');
+
 gulp.task('html', () => {
     return gulp.src([`/app/**/*.html`, `!/app/map.html`])
-        .pipe(sitemap({
+        .pipe(filemap({
           'dest': 'dest', //*Required Options
           'app': 'app' //*Required Options
-          'stream' : false //Only map.html files can be steamed
+          'stream' : false //Only the map.html file passes through the stream.
         }))
         .pipe(gulp.dest(`/dest`))
 });
@@ -88,16 +90,17 @@ gulp.task('html', () => {
 
 ## Options
 ```javascript
-    pipe(sitemap({
+    pipe(filemap({
         dest : 'destFolder',
         app : 'appFolder',
         name : 'map.html',
         noDir : 'etc',
         untitle : '-', //When the title can not be found in the meta information
         unknown : '-', //When the author can not be found in the meta information
-        noDescription : '-' //When the description can not be found in the meta information
-        division : 'html' //Subfolders for app options.
+        noDescription : '-', //When the description can not be found in the meta information
+        division : 'html', //Subfolders for app options.
                           //Template modifications are required. I'll explain it further below.
+        stream : false //Only the map.html file passes through the stream. (true: All files)
     }))
 ```
 
@@ -112,7 +115,7 @@ It can be multi-expressible on the basis of this
 #### map.html
 ```html
     <div>
-    <h1>gulp-sitemap-generator</h1>
+    <h1>gulp-filemap-generator</h1>
     <% _.each(maps, function(map,idx) { %>
     <h2><%= folderNames[idx] %></h1>
     <table class="table">
