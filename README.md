@@ -14,16 +14,17 @@
 ### gulpfile.js
 ```javascript
 gulp.task('html', () => {
-    return gulp.src([`/app/**/*.html`])
+    return gulp.src([`/app/**/*.html`, `!/app/map.html`])
         .pipe(sitemap({
           'dest': 'dest', //*Required Options
           'app': 'app' //*Required Options
+          'stream' : false //Only map.html files can be steamed
         }))
         .pipe(gulp.dest(`/dest`))
 });
 ```
 
-### your-template.html
+### map.html
 ```html
 <h2><%= folderNames[0] %> directory</h1>
 <table>
@@ -107,39 +108,8 @@ It can be multi-expressible on the basis of this
 ```javascript
     division : 'html'
 ```
-#### your-template.html
-```html
-<div>
-    <h1>gulp-sitemap-generator</h1>
-    <% _.each(maps, function(map,idx) { %>
-    <h2><%= folderNames[idx] %></h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th><span>title</span></th>
-                <th><span>directory</span></th>
-                <th><span>filename</span></th>
-                <th><span>author</span></th>
-                <th><span>description</span></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% _.each(map, function(m) { %>
-            <tr>
-                <td><span><%= m.title %></span></td>
-                <td><span><%= m.href %></span></td>
-                <td><a href="<%= m.href %>" target="_blank"><%= m.name %></a></td>
-                <td><span><%= m.author %></span></td>
-                <td><span><%= m.description %></span></td>
-            </tr>
-            <% }); %>
-        </tbody>
-    </table>
-    <% }); %>
-</div>    
-```
 
-#### your-template.html
+#### map.html
 ```html
     <div>
     <h1>gulp-sitemap-generator</h1>
