@@ -13,7 +13,8 @@ function siteMapGenerator(options){
         'unknown':'-',
         'noDir':'상위',
         'noDescription':'-',
-        'division':false
+        'division':false,
+        'stream' : true
     },options),
     outputFile,
     stream,
@@ -99,7 +100,9 @@ function siteMapGenerator(options){
         } else {
             pushDataObject(maps);
         }
-        this.push(file);
+        if(config.stream){
+            this.push(file);
+        }
         cb();
 	};
     stream._flush = function(cb) {
