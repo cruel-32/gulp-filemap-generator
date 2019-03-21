@@ -1,5 +1,5 @@
-# gulp-sitemap-generator
-* auto generate sitemap for development.
+# gulp-filemap-generator
+* auto generate htmlfilemap for development.
 * It finds Web page files in the project and collects the path, file name and meta tag.
 
 프로젝트 내에 웹페이지 파일을 찾아 경로와 파일명 그리고 메타태그(title,author,description)를 수집해서 정리해줍니다. 
@@ -7,15 +7,16 @@
 
 ## Installation
 
-<pre><code>npm install gulp-sitemap-generator</code></pre>
+<pre><code>npm install gulp-file-generator</code></pre>
 
 ## Code Example
 
 ### gulpfile.js
 ```javascript
+const filemap = require('gulp-file-generator');
 gulp.task('html', () => {
     return gulp.src([`/app/**/*.html`, `!/app/map.html`])
-        .pipe(sitemap({
+        .pipe(filemap({
           'dest': 'dest', //*Required Options
           'app': 'app' //*Required Options
           'stream' : false //Only map.html files can be steamed
@@ -88,7 +89,7 @@ gulp.task('html', () => {
 
 ## Options
 ```javascript
-    pipe(sitemap({
+    pipe(filemap({
         dest : 'destFolder',
         app : 'appFolder',
         name : 'map.html',
@@ -113,7 +114,7 @@ It can be multi-expressible on the basis of this
 #### map.html
 ```html
     <div>
-    <h1>gulp-sitemap-generator</h1>
+    <h1>gulp-filemap-generator</h1>
     <% _.each(maps, function(map,idx) { %>
     <h2><%= folderNames[idx] %></h1>
     <table class="table">
