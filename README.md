@@ -86,9 +86,10 @@ gulp.task('filemap', () => {
         ]
     }
 ]
-
+```
 
 ### template example (lodash)
+``` html
 <div class="wrap">
     <h1 class="title">gulp-filemap-generator</h1>
     <% if(maps) {%>
@@ -147,6 +148,7 @@ gulp.task('filemap', () => {
         </div>
     <% } %>
 </div>  
+```
 
 ### map.html after build
 ```html
