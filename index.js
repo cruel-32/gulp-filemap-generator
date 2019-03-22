@@ -6,40 +6,83 @@ let Stream = require('stream'),
 
 const PLUGIN_NAME = 'gulp-filemap-generator';
 
-function fileMapGenerator(options){
+const fileMapGenerator = options => {
     let config = Object.assign({
         'baseDir':``,
         'template':`map.html`,
         'templatePath' : `./`,
         'title':'-',
         'author':'-',
-        'directory':'상위',
         'description':'-',
-        'division':false,
-        'stream' : true
+        'stream' : true,
+        'hrefBaseDir' : ``,
+        'listName' : 'maps'
     },options),
     outputFile,
-    stream,
-    folders = {
-        [config.directory] : 0
-    },
-    folderNames=[config.directory],
-    depthIndex = 1,
-    maps = config.division ? [[]] : [];
 	stream = Stream.PassThrough({
 		objectMode: true
     });
-    
-    stream._transform = function(file, encoding, cb) {
+
+    if(!config[config.listName]){
+        config[config.listName] = [];
+    }
+
+    const getMeta = (res,text)=> res.match(`\\\<meta\\s+[^\\>]*name\=[\\"\\']${text}[\\"\\'].*?\\>`,'im') || [`content='${config[text]}'`];
+    const getContent = meta=> meta.match(/content\=[\"\'](.{0,}?)[\"\']/,'im');
+
+    stream._transform = (file, encoding, cb)=>{
         let contents = file.contents.toString().replace(/\n/g,' ').replace(/\r/g,' '),
             filepath = file.path,
             cwd = file.cwd,
             relative = path.relative(cwd, filepath),
             dir = relative.replace(`${config.baseDir}`,''),
             head = contents.match(/\<head\>.+\<\/head\>/im),
-            name = path.parse(filepath).base,
-            title,author,description,folder;
+            data = null,
+            allPath = dir.replace(config.hrefBaseDir, '').split('\\').reduce((arr,path)=>{
+                if(path) arr.push(path);
+                return arr
+            },[]);
 
+        const initMeta = (head)=>{
+            const matchedTitle = head.match(/\<title\>(.{0,}?)\<\/title\>/im);
+            data = {
+                title : matchedTitle ? matchedTitle[1] : config.title,
+                author : getContent(getMeta(head,'author')[0])[1] || config.author,
+                description : getContent(getMeta(head,'description')[0])[1] || config.description,
+                href : dir
+            }
+        }
+
+        const buildFolder = (folders, depth)=>{
+            if((depth+1) >= allPath.length){
+                folders.push({
+                    "type" : "file",
+                    "fileName" : allPath[depth],
+                    "parentPath" : allPath[depth-1],
+                    "depth" : depth+1,
+                    data
+                });
+            } else {
+                const path = allPath[depth];
+                const folder = folders.find(f=>f.folderName===path);
+                if(folder){
+                    buildFolder(folder.children, depth+1);
+                } else {
+                    const children = [];
+                    folders.push({
+                        "type" : "folder",
+                        "folderName" : path,
+                        "parentPath" : allPath[depth-1],
+                        "depth" : depth+1,
+                        children
+                    });
+                    buildFolder(children, depth+1);
+                }
+            }
+        }
+        if(head){
+            initMeta(head[0]);
+        }
 		if (!outputFile) {
 			outputFile = new gutil.File({
 				base: file.cwd+config.templatePath,
@@ -48,72 +91,18 @@ function fileMapGenerator(options){
 				contents: file.isBuffer() ? new Buffer(0) : new Stream.PassThrough()
 			});
         }
-
-        let getMeta = function(res,text){
-            let reg = new RegExp(`\\\<meta\\s+[^\\>]*name\=[\\"\\']${text}[\\"\\'].*?\\>`,'im');
-            return res.match(reg);
-        }
-
-        let getContent = function(res){
-            let reg = new RegExp(`content\=[\"\'](.{0,}?)[\"\']`,'im');
-            return res.match(reg);
-        }
-
-        let pushDataObject = function(arr){
-            arr.push({
-                title:title?title[1]:config.title,
-                author:author?author[1]:config.author,
-                description:description?description[1]:config.description,
-                name:name,
-                href:dir
-            })
-        }
-
-        if(head){
-            title = head[0].match(/\<title\>(.{0,}?)\<\/title\>/im);
-            author = getMeta(head[0],'author');
-            if(author){
-                author = getContent(author[0]);
-            }
-            description = getMeta(head[0],'description');
-            if(description){
-                description = getContent(description[0]);
-            }
-        }
-
-        if(config.division){
-            if(dir.replace(name,'').includes(config.division)){
-                let reg = new RegExp(`[\\\\\\\/]${config.division}[\\\\\\\/](.{1,}?)[\\\\\\\/].{0,}${name}`, 'im');
-                let match = dir.match(reg);
-                if(match){
-                    if(match[1] in folders){
-                        pushDataObject(maps[folders[match[1]]]);
-                    } else {
-                        maps.push([]);
-                        folderNames.push(match[1]);
-                        folders[match[1]]=depthIndex;
-                        depthIndex+=1;
-                        pushDataObject(maps[folders[match[1]]]);
-                    }
-                } else {
-                    pushDataObject(maps[0])
-                }
-            }
-        } else {
-            pushDataObject(maps);
-        }
+        buildFolder(config[config.listName],0);
         if(config.stream){
             this.push(file);
         }
         cb();
     };
     
-    stream._flush = function(cb) {
-		if (maps.length) {
+    stream._flush = (cb)=>{
+		if (config[config.listName].length) {
 			consolidate['lodash'](path.join(config.templatePath,config.template), {
-                maps:maps,
-                folderNames:folderNames
-            }, function(err, html) {
+                [config.listName] : config[config.listName]
+            }, (err, html)=>{
                 if(err){
                     throw new gutil.PluginError(`${err.message} by ${PLUGIN_NAME}`);
                 }

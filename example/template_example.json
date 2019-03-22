@@ -1,0 +1,63 @@
+[
+    {
+        "type" : "folder",
+        "folderName" : "html",
+        "parentPath" : "",
+        "depth" : 1,
+        "children" : [
+            {
+                "type" : "file",
+                "fileName" : "test.html",
+                "parentPath" : "html",
+                "depth" : 2,
+                "data" : {
+                    "title" : "-",
+                    "author" : "-",
+                    "description" : "-",
+                    "name" : "-",
+                    "href" : "-"
+                }
+            },
+            {
+                "type" : "folder",
+                "folderName" : "20180318",
+                "parentPath" : "html",
+                "depth" : 2,
+                "children" : [
+
+                ]
+            }
+        ]
+    },
+    {
+        "type" : "folder",
+        "folderName" : "html2",
+        "parentPath" : "",
+        "depth" : 1,
+        "children" : [
+            {
+                "type" : "file",
+                "fileName" : "test.html",
+                "parentPath" : "html2",
+                "depth" : 2,
+                "data" : {
+                    "title" : "-",
+                    "author" : "-",
+                    "description" : "-",
+                    "name" : "-",
+                    "href" : "-"
+                }
+            },
+            {
+                "type" : "folder",
+                "folderName" : "20180318",
+                "parentPath" : "html2",
+                "depth" : 2,
+                "children" : [
+
+                ]
+            }
+        ]
+    }
+]
+

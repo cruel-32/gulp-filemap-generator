@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>INDEX</title>
+<meta name="description" content="좋은내용">
+<meta name='author' content="cruel32">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr", crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=korean" />
+<style lang="sass">
+.wrap {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px
+}
+
+.wrap .title {
+    font-size: 24px;
+    padding: 10px 0 20px
+}
+
+.wrap .file_list,
+.wrap .map_tree {
+    padding-left: 20px
+}
+
+.wrap .file_list li {
+    padding-left: 20px;
+    list-style: none
+}
+
+.wrap .file_list li .file_info {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px
+}
+
+.wrap .page {
+    font-size: 16px;
+    margin: 30px 0 10px
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+    <h1 class="title">gulp-filemap-generator</h1>
+    <% if(maps) {%>
+        <h2><i class="far fa-folder"></i> root 폴더 (build)</h2>
+        <div class="map_tree">
+            <% _.each(maps,function(map,index){ %>
+                <% if(map.type === 'folder'){%>
+                    <h2 class="page"><i class="far fa-folder"></i> <%= map.folderName %></h2>
+                <% }%>
+
+                <% if(map.children.length){ %>
+                    <ul class="file_list">
+                    <% _.each(map.children,function(child,idx){ %>
+                        <% if(child.type === 'folder') { %>
+                            <li>
+                                <span><i class="far fa-folder"></i> <%= child.folderName %>/</span>
+                                <ul class="file_list">
+                                    <% _.each(child.children,function(grandChild,idx){ %>
+                                        <% if(grandChild.type === 'folder') { %>
+                                            <li>
+                                                <span><i class="far fa-folder"></i> <%= child.folderName %>/</span>
+                                            </li>
+                                        <% } else if(grandChild.type === 'file') { %>
+                                            <li>
+                                                <div class="file_info">
+                                                    <span>
+                                                        <i class="far fa-file-code"></i>
+                                                        <a href="<%= grandChild.data.href %>" class="txt" target="_blank"><%= grandChild.fileName %></a>
+                                                    </span>
+                                                    <span>타이틀(<%= grandChild.data.title %>)</span>
+                                                    <span>작업자(<%= grandChild.data.author %>)</span>
+                                                    <span>설명(<%= grandChild.data.description %>)</span>
+                                                </div>
+                                            </li>
+                                        <% } %>
+                                    <% }) %>
+                                </ul>
+                            </li>
+                        <% } else if(child.type === 'file') { %>
+                            <li>
+                                <div class="file_info">
+                                    <span>
+                                        <i class="far fa-file-code"></i>
+                                        <a href="<%= child.data.href %>" class="txt" target="_blank">/<%= child.fileName %></a>
+                                    </span>
+                                    <span>타이틀(<%= child.data.title %>)</span>
+                                    <span>작업자(<%= child.data.author %>)</span>
+                                    <span>설명(<%= child.data.description %>)</span>
+                                </div>
+                            </li>
+                        <% } %>
+                    <% }) %>
+                    </ul>
+                <% } %>
+            <% }) %>
+        </div>
+    <% } %>
+</div>    
+</body>
+</html>
