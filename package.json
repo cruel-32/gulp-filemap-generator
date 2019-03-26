@@ -1,6 +1,6 @@
 {
   "name": "gulp-filemap-generator",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "auto generate filemap for development",
   "main": "index.js",
   "repository": {

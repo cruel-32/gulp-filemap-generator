@@ -206,7 +206,10 @@ gulp.task('filemap', () => {
         'author':'-', //default author name
         'description':'-', //default html description
         'stream' : true, //Only the map.html file passes through the stream. (true: All files)
-        "hrefBaseDir" : '' //Deletes unwanted characters from the current directory and generates an address.
+        "hrefBaseDir" : '', //Deletes unwanted characters from the current directory and generates an address.
+        "toJson" : 'default false', //Instead of use template, it generate json file
+        "jsonName" : "map", //json file name
+        "jsonDest" : `./build`
     }
 ```
 

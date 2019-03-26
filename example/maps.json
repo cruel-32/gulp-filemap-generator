@@ -1,0 +1,81 @@
+{
+    "data": [{
+        "type": "folder",
+        "folderName": "html",
+        "depth": 1,
+        "children": [{
+            "type": "file",
+            "fileName": "test.html",
+            "parentPath": "html",
+            "depth": 2,
+            "data": {
+                "title": "함수형-프로그래밍 기초",
+                "author": "아무개",
+                "description": "함수형-프로그래밍"
+            },
+            "href": "\\html\\test.html"
+        }, {
+            "type": "folder",
+            "folderName": "20180318",
+            "parentPath": "html",
+            "depth": 2,
+            "children": [{
+                "type": "file",
+                "fileName": "functional-programming-1.html",
+                "parentPath": "20180318",
+                "depth": 3,
+                "data": {
+                    "title": "함수형-프로그래밍 기초",
+                    "author": "아무개",
+                    "description": "함수형-프로그래밍"
+                },
+                "href": "\\html\\20180318\\functional-programming-1.html"
+            }, {
+                "type": "file",
+                "fileName": "functional-programming-2.html",
+                "parentPath": "20180318",
+                "depth": 3,
+                "data": {
+                    "title": "함수형-프로그래밍 기초",
+                    "author": "아무개",
+                    "description": "함수형-프로그래밍"
+                },
+                "href": "\\html\\20180318\\functional-programming-2.html"
+            }]
+        }, {
+            "type": "folder",
+            "folderName": "20181017",
+            "parentPath": "html",
+            "depth": 2,
+            "children": [{
+                "type": "file",
+                "fileName": "flex_test.html",
+                "parentPath": "20181017",
+                "depth": 3,
+                "data": {
+                    "title": "flex를 익혀봅시다.",
+                    "author": "아무개 flex",
+                    "description": "flex를 익혀봅시다."
+                },
+                "href": "\\html\\20181017\\flex_test.html"
+            }]
+        }, {
+            "type": "folder",
+            "folderName": "20190321",
+            "parentPath": "html",
+            "depth": 2,
+            "children": [{
+                "type": "file",
+                "fileName": "structures&algorithms.html",
+                "parentPath": "20190321",
+                "depth": 3,
+                "data": {
+                    "title": "자바스크립트 - 자료구조와 알고리즘",
+                    "author": "아무개",
+                    "description": "자료구조와 알고리즘"
+                },
+                "href": "\\html\\20190321\\structures&algorithms.html"
+            }]
+        }]
+    }]
+}

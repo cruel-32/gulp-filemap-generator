@@ -2,6 +2,7 @@ let Stream = require('stream'),
     path = require('path'),
     gutil = require('gulp-util'),
 	_ = require('lodash'),
+	fs = require('fs'),
 	consolidate = require('consolidate');
 
 const PLUGIN_NAME = 'gulp-filemap-generator';
@@ -16,7 +17,11 @@ const fileMapGenerator = options => {
         'description':'-',
         'stream' : false,
         'hrefBaseDir' : ``,
-        'listName' : 'maps'
+        'listName' : 'maps',
+
+        'toJson' : false,
+        "jsonName" : "maps.json",
+        "jsonPath" : `./`
     },options),
     outputFile,
 	stream = Stream.PassThrough({
@@ -84,14 +89,16 @@ const fileMapGenerator = options => {
         if(head){
             initMeta(head[0]);
         }
-		if (!outputFile) {
+
+		if (!outputFile && !config.toJson) {
 			outputFile = new gutil.File({
 				base: file.cwd+config.templatePath,
 				cwd: file.cwd,
-				path: path.join(file.cwd+config.templatePath, config.template),
+                path: path.join(file.cwd+config.templatePath, config.template),
 				contents: file.isBuffer() ? new Buffer(0) : new Stream.PassThrough()
-			});
+            });
         }
+
         buildFolder(config[config.listName],0);
         if(config.stream && this.push){
             this.push(file);
@@ -101,22 +108,34 @@ const fileMapGenerator = options => {
     
     stream._flush = (cb)=>{
 		if (config[config.listName].length) {
-			consolidate['lodash'](path.join(config.templatePath,config.template), {
-                [config.listName] : config[config.listName]
-            }, (err, html)=>{
-                if(err){
-                    throw new gutil.PluginError(`${err.message} by ${PLUGIN_NAME}`);
-                }
-                let content = Buffer(html);
-                if(outputFile.isBuffer()){
-                    outputFile.contents = content;
-                } else {
-                    outputFile.contents.write(content);
-                    outputFile.contents.end();
-                }
-                stream.push(outputFile);
+            if(config.toJson){
+                const jsonData = JSON.stringify({
+                    data : config[config.listName]
+                });
+                const jsonFile = fs.createWriteStream(
+                    path.join(config.jsonDest, `${config.jsonName}.json`,)
+                )
+                jsonFile.write(Buffer(jsonData));
+                jsonFile.end();
                 cb();
-			});
+            } else {
+                consolidate['lodash'](path.join(config.templatePath,config.template), {
+                    [config.listName] : config[config.listName]
+                }, (err, html)=>{
+                    if(err){
+                        throw new gutil.PluginError(`${err.message} by ${PLUGIN_NAME}`);
+                    }
+                    let content = Buffer(html);
+                    if(outputFile.isBuffer()){
+                        outputFile.contents = content;
+                    } else {
+                        outputFile.contents.write(content);
+                        outputFile.contents.end();
+                    }
+                    stream.push(outputFile);
+                    cb();
+                });
+            }
 		} else {
 			cb();
 		}
