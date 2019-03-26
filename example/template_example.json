@@ -14,9 +14,9 @@
                     "title" : "-",
                     "author" : "-",
                     "description" : "-",
-                    "name" : "-",
-                    "href" : "-"
-                }
+                    "name" : "-"
+                },
+                "href" : "-"
             },
             {
                 "type" : "folder",
@@ -44,9 +44,9 @@
                     "title" : "-",
                     "author" : "-",
                     "description" : "-",
-                    "name" : "-",
-                    "href" : "-"
-                }
+                    "name" : "-"
+                },
+                "href" : "-"
             },
             {
                 "type" : "folder",
