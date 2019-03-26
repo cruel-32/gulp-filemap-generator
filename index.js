@@ -14,7 +14,7 @@ const fileMapGenerator = options => {
         'title':'-',
         'author':'-',
         'description':'-',
-        'stream' : true,
+        'stream' : false,
         'hrefBaseDir' : ``,
         'listName' : 'maps'
     },options),
@@ -93,7 +93,7 @@ const fileMapGenerator = options => {
 			});
         }
         buildFolder(config[config.listName],0);
-        if(config.stream){
+        if(config.stream && this.push){
             this.push(file);
         }
         cb();
