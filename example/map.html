@@ -6,43 +6,13 @@
 <meta name="description" content="좋은내용">
 <meta name='author' content="cruel32">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/css/map.css" />
 <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr", crossorigin="anonymous"/>
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=korean" />
-<style lang="sass">
-.wrap {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 20px
-}
-
-.wrap .title {
-    font-size: 24px;
-    padding: 10px 0 20px
-}
-
-.wrap .file_list,
-.wrap .map_tree {
-    padding-left: 20px
-}
-
-.wrap .file_list li {
-    padding-left: 20px;
-    list-style: none
-}
-
-.wrap .file_list li .file_info {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px
-}
-
-.wrap .page {
-    font-size: 16px;
-    margin: 30px 0 10px
-}
-</style>
 </head>
 <body>
+
 <div class="wrap">
     <h1 class="title">gulp-filemap-generator</h1>
     <% if(maps) {%>
@@ -70,7 +40,7 @@
                                                 <div class="file_info">
                                                     <span>
                                                         <i class="far fa-file-code"></i>
-                                                        <a href="<%= grandChild.data.href %>" class="txt" target="_blank"><%= grandChild.fileName %></a>
+                                                        <a href="<%= grandChild.href %>" class="txt" target="_blank"><%= grandChild.fileName %></a>
                                                     </span>
                                                     <span>타이틀(<%= grandChild.data.title %>)</span>
                                                     <span>작업자(<%= grandChild.data.author %>)</span>
@@ -86,7 +56,7 @@
                                 <div class="file_info">
                                     <span>
                                         <i class="far fa-file-code"></i>
-                                        <a href="<%= child.data.href %>" class="txt" target="_blank">/<%= child.fileName %></a>
+                                        <a href="<%= child.href %>" class="txt" target="_blank">/<%= child.fileName %></a>
                                     </span>
                                     <span>타이틀(<%= child.data.title %>)</span>
                                     <span>작업자(<%= child.data.author %>)</span>

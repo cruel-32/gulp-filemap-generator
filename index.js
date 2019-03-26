@@ -38,7 +38,8 @@ const fileMapGenerator = options => {
             dir = relative.replace(`${config.baseDir}`,''),
             head = contents.match(/\<head\>.+\<\/head\>/im),
             data = null,
-            allPath = dir.replace(config.hrefBaseDir, '').split('\\').reduce((arr,path)=>{
+            href = dir.replace(config.hrefBaseDir, ''),
+            allPath = href.split('\\').reduce((arr,path)=>{
                 if(path) arr.push(path);
                 return arr
             },[]);
@@ -49,7 +50,6 @@ const fileMapGenerator = options => {
                 title : matchedTitle ? matchedTitle[1] : config.title,
                 author : getContent(getMeta(head,'author')[0])[1] || config.author,
                 description : getContent(getMeta(head,'description')[0])[1] || config.description,
-                href : dir
             }
         }
 
@@ -60,7 +60,8 @@ const fileMapGenerator = options => {
                     "fileName" : allPath[depth],
                     "parentPath" : allPath[depth-1],
                     "depth" : depth+1,
-                    data
+                    data,
+                    href
                 });
             } else {
                 const path = allPath[depth];
