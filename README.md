@@ -2,9 +2,14 @@
 * auto generate filemap for development.
 * It finds Web page files in the project and collects the path, file name and meta tag.
 
-빌드된 폴더 내에 웹페이지파일(html)을 찾아 경로와 파일명 그리고 메타태그(title,author,description)를 수집합니다. 그리고 템플릿 파일을 기준으로 file-tree 생성합니다. (lodash)
+빌드된 폴더 내에 웹페이지파일(html)을 찾아 경로와 파일명 그리고 메타태그(title,author,description)를 수집합니다. 그리고 템플릿 파일을 기준으로 file-tree 생성합니다. (lodash or json)
 
-It finds files in the built folder, collects path, file name, and meta tag(title,author,description). And it creates a tree file-tree on the template file. (lodash)
+It finds files in the built folder, collects path, file name, and meta tag(title,author,description). And it creates a tree file-tree on the template file. (lodash or json)
+
+html외에 css, image 파일 등 모든 파일에 사용가능합니다.
+
+(You can use all files)
+
 
 (html 파일명을 한글로 작성하지 마세요!)
 
