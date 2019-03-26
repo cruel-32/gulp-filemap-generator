@@ -28,8 +28,8 @@ const filemap = require('gulp-filemap-generator');
 gulp.task('filemap', () => {
     return gulp.src([`/dest/**/*.html`])
         .pipe(filemap({
-            'template':`map.html`, //*required : filemap template
-            'templatePath' : `./source`, //*required : template file path
+            'template':`map.html`, //filemap template
+            'templatePath' : `./source`, //template file path
         }))
         .pipe(gulp.dest(`/dest`))
 });
