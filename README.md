@@ -200,6 +200,24 @@ gulp.task('filemap', () => {
 </div>
 ```
 
+## toJson (options type:Boolean default:false)
+Instead of use lodash template, You can generate a maps.json
+```javascript
+{
+    "data" : [
+        {
+            "type" : "folder",
+            "folderName" : "app",
+            "parentPath" : "default : option.directory",
+            "depth" : 1,
+            "children" : [
+                //...
+            ]
+        }
+    ]
+}
+```
+
 ## Options
 ```javascript
     {
