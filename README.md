@@ -205,7 +205,7 @@ gulp.task('filemap', () => {
         'title':'-', //default html title
         'author':'-', //default author name
         'description':'-', //default html description
-        'stream' : true, //Only the map.html file passes through the stream. (true: All files)
+        'stream' : false, //Only the map.html file passes through the stream. (true: All files)
         "hrefBaseDir" : '' //Deletes unwanted characters from the current directory and generates an address.
     }
 ```
