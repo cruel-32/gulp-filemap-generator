@@ -34,7 +34,12 @@ const fileMapGenerator = options => {
 
     const getMeta = (res,text)=> res.match(`\\\<meta\\s+[^\\>]*name\=[\\"\\']${text}[\\"\\'].*?\\>`,'im') || [`content='${config[text]}'`];
     const getContent = meta=> meta.match(/content\=[\"\'](.{0,}?)[\"\']/,'im');
-
+    const sortItem = (itemA,itemB) =>{
+        const a = itemA.fileName || itemA.folderName;
+        const b = itemB.fileName || itemB.folderName;
+        return a.toLowerCase() >= b.toLowerCase();
+    }
+    
     stream._transform = (file, encoding, cb)=>{
         let contents = file.contents.toString().replace(/\n/g,' ').replace(/\r/g,' '),
             filepath = file.path,
@@ -58,6 +63,7 @@ const fileMapGenerator = options => {
             }
         }
 
+        
         const buildFolder = (folders, depth)=>{
             if((depth+1) >= allPath.length){
                 folders.push({
@@ -68,6 +74,7 @@ const fileMapGenerator = options => {
                     data,
                     href
                 });
+                folders.sort(sortItem);
             } else {
                 const path = allPath[depth];
                 const folder = folders.find(f=>f.folderName===path);
@@ -81,7 +88,8 @@ const fileMapGenerator = options => {
                         "parentPath" : allPath[depth-1],
                         "depth" : depth+1,
                         children
-                    });
+                    })
+                    folders.sort(sortItem);
                     buildFolder(children, depth+1);
                 }
             }
